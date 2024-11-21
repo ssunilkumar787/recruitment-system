@@ -1,0 +1,50 @@
+.button-group {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  .btn {
+    border-radius: 0;
+
+    &:first-child {
+      border-top-left-radius: 22px;
+      border-bottom-left-radius: 22px;
+      width: 200px;
+      padding: 10px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 22px;
+      border-bottom-right-radius: 22px;
+      width: 200px;
+      padding: 10px;
+    }
+
+    background-color: #cce2f6;
+    color: #0d77d4;
+    border: 1px solid #ccc;
+
+    &.active {
+      background-color: #0d77d4;
+      color: white;
+    }
+  }
+}
+
+.list-input {
+  background-color: #cce2f6;
+  border-radius: 22px;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.drop-drag {
+  border: 2px dashed #0d77d4;
+  padding: 1rem;
+  margin: 1rem;
+  .btn-file {
+    background-color: #0d77d4;
+  }
+}
