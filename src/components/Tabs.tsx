@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import { Tab, Nav, Card } from "react-bootstrap";
 
-const tabStyle = {
-  borderBottom: "none",
-  color: "#616161",
-};
-
-const activeTabStyle = {
-  borderBottom: "2px solid black",
-  fontWeight: "bold",
-};
-
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState<any>("goodFit");
+  const [activeTab, setActiveTab] = useState<string>("goodFit");
 
   const users = [
     {
@@ -67,7 +57,7 @@ const Tabs = () => {
     },
   ];
 
-  const getInitials = (firstName, lastName) => {
+  const getInitials = (firstName: string, lastName: string) => {
     return `${firstName.charAt(0)}${lastName.charAt(0)}`;
   };
 
@@ -84,12 +74,15 @@ const Tabs = () => {
 
   return (
     <Card className="p-3 mt-2">
-      <Tab.Container activeKey={activeTab} onSelect={(k) => setActiveTab(k)}>
+      <Tab.Container
+        activeKey={activeTab}
+        onSelect={(k) => setActiveTab(k as string)}
+      >
         <Nav variant="tabs" className="mb-3">
           <Nav.Item>
             <Nav.Link
               eventKey="goodFit"
-              style={activeTab === "goodFit" ? activeTabStyle : tabStyle}
+              className={`tab ${activeTab === "goodFit" ? "active" : ""}`}
             >
               Good Fit (3)
             </Nav.Link>
@@ -97,7 +90,7 @@ const Tabs = () => {
           <Nav.Item>
             <Nav.Link
               eventKey="connected"
-              style={activeTab === "connected" ? activeTabStyle : tabStyle}
+              className={`tab ${activeTab === "connected" ? "active" : ""}`}
             >
               Connected (0)
             </Nav.Link>
@@ -105,7 +98,7 @@ const Tabs = () => {
           <Nav.Item>
             <Nav.Link
               eventKey="replied"
-              style={activeTab === "replied" ? activeTabStyle : tabStyle}
+              className={`tab ${activeTab === "replied" ? "active" : ""}`}
             >
               Replied (0)
             </Nav.Link>
@@ -115,39 +108,21 @@ const Tabs = () => {
         <Tab.Content>
           <Tab.Pane eventKey={activeTab}>
             {filteredUsers.map((user) => (
-              <div key={user.id} className="d-flex align-items-start p-2">
+              <div
+                key={user.id}
+                className="user-item d-flex align-items-start p-2"
+              >
                 <div
                   className="avatar me-3"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    backgroundColor: getRandomColor(),
-                    color: "white",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontWeight: "bold",
-                  }}
+                  style={{ backgroundColor: getRandomColor() }}
                 >
                   {getInitials(user.firstName, user.lastName)}
                 </div>
                 <div className="flex-grow-1">
                   <div className="fw-bold">{`${user.firstName} ${user.lastName}`}</div>
-                  <div
-                    style={{
-                      fontSize: "0.9em",
-                      color: "#616161",
-                      fontWeight: 300,
-                    }}
-                  >
-                    <span
-                      className="text-color-black"
-                      style={{ color: "black" }}
-                    >
-                      {user.occupation}
-                    </span>{" "}
-                    @ <span>{user.company}</span> ({user.startYear} - present) |{" "}
+                  <div className="user-details">
+                    <span className="occupation">{user.occupation}</span> @{" "}
+                    <span>{user.company}</span> ({user.startYear} - present) |{" "}
                     {user.location}
                   </div>
                 </div>

@@ -48,3 +48,56 @@
     background-color: #0d77d4;
   }
 }
+
+.recriter-list {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  overflow: hidden; /* Add this to ensure the content stays within the circular shape */
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.avatar-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.tab {
+  border-bottom: none;
+  color: #616161;
+
+  &.active {
+    border-bottom: 2px solid black;
+    font-weight: bold;
+  }
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.user-details {
+  font-size: 0.9em;
+  color: #616161;
+  font-weight: 300;
+
+  .occupation {
+    color: black;
+  }
+}

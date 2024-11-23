@@ -7,7 +7,7 @@ const recruiters = [
 ];
 
 const Recruiters = () => {
-  const getInitials = (firstName, lastName) => {
+  const getInitials = (firstName: string, lastName: string) => {
     return `${firstName.charAt(0)}${lastName.charAt(0)}`;
   };
 
@@ -24,7 +24,7 @@ const Recruiters = () => {
     <Card className="p-3 mt-2">
       <div className="d-flex justify-content-between">
         <div className="fs-4 fw-bold">Recruiters</div>
-        <div className="fs-4 fw-bold" style={{ cursor: "pointer" }}>
+        <div className="fs-4 fw-bold cursor-pointer">
           <i className="bi bi-plus-lg"></i>
         </div>
       </div>
@@ -36,28 +36,17 @@ const Recruiters = () => {
           key={recruiter.id}
           className="recruiters-list d-flex align-items-center mb-2"
         >
-          <div
-            className="avatar me-3"
-            style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "50%",
-              backgroundColor: getRandomColor(),
-              color: "white",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontWeight: "bold",
-            }}
-          >
-            {getInitials(recruiter.firstName, recruiter.lastName)}
+          <div className="avatar-container me-3">
+            <div
+              className="recriter-list"
+              style={{ backgroundColor: getRandomColor() }}
+            >
+              {getInitials(recruiter.firstName, recruiter.lastName)}
+            </div>
           </div>
           <div className="flex-grow-1">{`${recruiter.firstName} ${recruiter.lastName}`}</div>
-          <div>
-            <i
-              className="bi bi-three-dots-vertical"
-              style={{ cursor: "pointer" }}
-            ></i>
+          <div className="cursor-pointer">
+            <i className="bi bi-three-dots-vertical"></i>
           </div>
         </div>
       ))}
